@@ -327,8 +327,8 @@ static void reportHidElement(HIDElement *element) {
     [gLock lock];
 
     
-    static float scale_x = SCREEN_RESX / 3966.0;
-    static float scale_y = SCREEN_RESY / 2239.0;
+    static float scale_x = SCREEN_RESX / TOUCH_RESX;
+    static float scale_y = SCREEN_RESY / TOUCH_RESY;
     
     //printf("\n+++++++++++\n");
     //printHidElement("report element", element);
@@ -345,13 +345,13 @@ static void reportHidElement(HIDElement *element) {
         short value = element->currentValue & 0xffff;
         
         if (element->usage==0x30){ //X
-            fingerId = (element->cookie-21)/9; //int division truncates
+//            fingerId = (element->cookie-21)/9; //int division truncates
             int x = (int)(value * scale_x);
             submitTouch(fingerId, XCOORD, x, NO_CHANGE);
             
         }
         else if (element->usage==0x31){ //Y
-            fingerId = (element->cookie-24)/9; //int division truncates
+//            fingerId = (element->cookie-24)/9; //int division truncates
             int y = (int)(value * scale_y);
             submitTouch(fingerId, YCOORD, y, NO_CHANGE);
         }
@@ -367,12 +367,13 @@ static void reportHidElement(HIDElement *element) {
     else if (element->type == 2) {
         button = (element->currentValue) ? DOWN : UP;
         //finger by cookie value, 15 is 0, 16 is 1, etc
-        fingerId=element->cookie-15;
-        
+//        fingerId=element->cookie-15;
+		
         submitTouch(fingerId, PRESS, 0, button);
     }
     else if (element->usage == 0x51 && element->currentValue!=0){
-        submitTouch((element->cookie-17)/9, CONTACTID, element->currentValue/4, NO_CHANGE);
+//        submitTouch((element->cookie-15)/9, CONTACTID, element->currentValue/4, NO_CHANGE);
+        submitTouch(0, CONTACTID, element->currentValue/4, NO_CHANGE);
     }
     else if (element->usage == 0x54){
         submitTouch(0, FINGERCOUNT, element->currentValue, NO_CHANGE);
