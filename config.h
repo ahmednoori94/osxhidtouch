@@ -13,15 +13,16 @@
 
 #define NUM_TOUCHES 10
 
-// Dell XPS 12
-#define TOUCH_VID 0x3eb
-#define TOUCH_PID 0x842f
+// cube i7 stylus
+#define TOUCH_VID 0xAF8
+#define TOUCH_PID 0x1394
 
 #define SCREEN_RESX 1920
 #define SCREEN_RESY 1080
 
 #define TOUCH_RESX 4095.0f
 #define TOUCH_RESY 4095.0f
+
 
 // SP3
 //#define TOUCH_VID 0x1b96
