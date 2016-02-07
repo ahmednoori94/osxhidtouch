@@ -14,8 +14,8 @@
 #define NUM_TOUCHES 10
 
 // cube i7 stylus
-#define TOUCH_VID 0xAF8
-#define TOUCH_PID 0x1394
+#define TOUCH_VID 0x2808
+#define TOUCH_PID 0x5012
 
 #define SCREEN_RESX 1920
 #define SCREEN_RESY 1080
