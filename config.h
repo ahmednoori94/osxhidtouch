@@ -20,8 +20,8 @@
 #define SCREEN_RESX 1920
 #define SCREEN_RESY 1080
 
-#define TOUCH_RESX 4095.0f
-#define TOUCH_RESY 4095.0f
+#define TOUCH_RESX 1920.0f
+#define TOUCH_RESY 1080.0f
 
 
 // SP3
